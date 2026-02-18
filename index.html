@@ -57,6 +57,15 @@
       font-family: 'Bodoni Moda', serif; font-size: 0.7rem;
       opacity: 0.3;
     }
+    .theme-title {
+      display: none;
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      opacity: 0.35; margin-bottom: 1.5rem;
+      text-align: center;
+      padding-top: 1rem; border-top: 1px solid currentColor;
+      width: 200px;
+    }
     .brand-name { line-height: 1.1; text-align: center; }
     .brand-quote {
       text-align: center; max-width: 500px;
@@ -648,43 +657,117 @@
       letter-spacing: 0.4em; color: #bbb;
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE: TABLET ── */
     @media (max-width: 768px) {
+      html { scroll-snap-type: none; }
       .theme-nav { height: 42px; }
       .theme-nav a { font-size: 0.55rem; padding: 0.7rem 0.6rem; }
       .nav-brand { font-size: 0.85rem; }
-      .theme-section { padding: 4.5rem 1.2rem 2rem; }
-      .image-row { gap: 1.5rem; }
-      .theme-label { font-size: 0.5rem; top: 4rem; left: 1.2rem; }
-      .theme-number { top: 3.8rem; right: 1.2rem; }
+      .theme-section {
+        min-height: auto; scroll-snap-align: none;
+        padding: 5rem 1.5rem 3rem;
+      }
+      .image-row {
+        gap: 1.5rem;
+        display: grid; grid-template-columns: 1fr 1fr;
+        justify-items: center;
+      }
+      .image-row > :nth-child(3) {
+        grid-column: 1 / -1;
+      }
+      .theme-label {
+        position: static; font-size: 0.5rem;
+        margin-bottom: 0.5rem; opacity: 0.5;
+      }
+      .theme-number {
+        position: static; font-size: 0.6rem;
+        margin-bottom: 0.3rem; opacity: 0.4;
+      }
+      .brand-quote { margin: 1rem auto; font-size: 0.95rem; }
+      .theme-title {
+        display: block;
+      }
 
-      #gallery .frame img,
-      #salon .frame img,
-      #apothecary .apothecary-frame img,
-      #opera .opera-frame img { width: 160px; height: 230px; }
-      #gallery .frame, #salon .frame { padding: 1rem; }
-      #daguerreotype .oval-frame { width: 170px; height: 240px; }
-      #wunderkammer .specimen img { width: 160px; height: 210px; }
-      #parchment .frame img { width: 160px; height: 220px; }
-      #modern .clean-frame img { width: 180px; height: 260px; }
-      #cathedral .arch-frame { width: 160px; height: 260px; }
+      /* Gallery */
+      #gallery .frame img { width: 100%; height: auto; max-height: 320px; }
+      #gallery .frame { padding: 0.8rem; }
 
-      #broadsheet .columns { grid-template-columns: 1fr; gap: 1rem; }
+      /* Salon */
+      #salon .frame img { width: 100%; height: auto; max-height: 320px; }
+      #salon .frame { padding: 0.8rem; }
+
+      /* Parchment */
+      #parchment .frame img { width: 100%; height: auto; max-height: 300px; }
+
+      /* Cathedral */
+      #cathedral .arch-frame { width: 100%; max-width: 200px; height: 280px; }
+
+      /* Broadsheet */
+      #broadsheet .columns { grid-template-columns: 1fr; gap: 1.2rem; }
       #broadsheet .col-divider { display: none; }
       #broadsheet .broadsheet-container { padding: 1.2rem; }
+      #broadsheet .column img { max-height: 300px; object-fit: contain; }
+      #broadsheet .image-row { display: block; }
+
+      /* Daguerreotype */
+      #daguerreotype .oval-frame { width: 160px; height: 220px; }
+
+      /* Apothecary */
+      #apothecary .apothecary-frame img { width: 100%; height: auto; max-height: 300px; }
+
+      /* Opera */
+      #opera .opera-frame img { width: 100%; height: auto; max-height: 300px; }
+
+      /* Wunderkammer */
+      #wunderkammer .specimen img { width: 100%; height: auto; max-height: 280px; }
+
+      /* Modern */
+      #modern .clean-frame img { width: 100%; height: auto; max-height: 320px; }
+      #modern .image-row { gap: 2rem; }
     }
 
+    /* ── RESPONSIVE: PHONE ── */
     @media (max-width: 480px) {
-      .image-row { gap: 1rem; }
+      .theme-section { padding: 4rem 1rem 2.5rem; }
+      .image-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .image-row > :nth-child(3) {
+        grid-column: auto;
+      }
+
+      /* Full-width images on phone */
       #gallery .frame img,
-      #salon .frame img,
-      #apothecary .apothecary-frame img,
-      #opera .opera-frame img { width: 130px; height: 190px; }
-      #daguerreotype .oval-frame { width: 140px; height: 200px; }
-      #wunderkammer .specimen img { width: 130px; height: 175px; }
-      #parchment .frame img { width: 130px; height: 185px; }
-      #modern .clean-frame img { width: 140px; height: 200px; }
-      #cathedral .arch-frame { width: 130px; height: 215px; }
+      #salon .frame img { width: 100%; height: auto; max-height: 380px; }
+      #gallery .frame, #salon .frame { padding: 0.6rem; max-width: 85vw; }
+
+      #parchment .frame img { width: 100%; height: auto; max-height: 360px; }
+      #parchment .frame { max-width: 85vw; }
+
+      #cathedral .arch-frame { width: 80vw; max-width: 280px; height: 360px; }
+
+      #broadsheet .masthead .brand-name { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+      #broadsheet .broadsheet-container { padding: 1rem; }
+      #broadsheet .column img { max-height: 350px; }
+
+      #daguerreotype .oval-frame { width: 55vw; max-width: 220px; height: 70vw; max-height: 300px; }
+
+      #apothecary .apothecary-frame img { width: 100%; height: auto; max-height: 360px; }
+      #apothecary .apothecary-frame { max-width: 85vw; }
+
+      #opera .opera-frame img { width: 100%; height: auto; max-height: 360px; }
+      #opera .opera-frame { max-width: 85vw; }
+
+      #wunderkammer .specimen img { width: 100%; height: auto; max-height: 340px; }
+      #wunderkammer .specimen { max-width: 85vw; }
+
+      #modern .clean-frame img { width: 100%; height: auto; max-height: 380px; }
+      #modern .clean-frame { max-width: 85vw; }
+      #modern .image-row { gap: 2.5rem; }
+
+      .intro h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .intro .tagline { font-size: 0.9rem; padding: 0 1rem; }
     }
 
     /* ── INTRO SECTION ── */
@@ -762,6 +845,7 @@
 
   <!-- ══ THEME 1: THE WHITE GALLERY ══ -->
   <section class="theme-section" id="gallery">
+    <div class="theme-title">01 — The White Gallery</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">01 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -785,6 +869,7 @@
 
   <!-- ══ THEME 2: THE DARK SALON ══ -->
   <section class="theme-section" id="salon">
+    <div class="theme-title">02 — The Dark Salon</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">02 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -807,6 +892,7 @@
 
   <!-- ══ THEME 3: THE PARCHMENT ARCHIVE ══ -->
   <section class="theme-section" id="parchment">
+    <div class="theme-title">03 — The Parchment Archive</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">03 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -830,6 +916,7 @@
 
   <!-- ══ THEME 4: THE GOTHIC CATHEDRAL ══ -->
   <section class="theme-section" id="cathedral">
+    <div class="theme-title">04 — The Gothic Cathedral</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">04 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -862,6 +949,7 @@
 
   <!-- ══ THEME 5: THE VICTORIAN BROADSHEET ══ -->
   <section class="theme-section" id="broadsheet">
+    <div class="theme-title">05 — The Victorian Broadsheet</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">05 / 10</span>
     <div class="broadsheet-container reveal">
@@ -893,6 +981,7 @@
 
   <!-- ══ THEME 6: THE DAGUERREOTYPE STUDIO ══ -->
   <section class="theme-section" id="daguerreotype">
+    <div class="theme-title">06 — The Daguerreotype Studio</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">06 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -922,6 +1011,7 @@
 
   <!-- ══ THEME 7: THE APOTHECARY ══ -->
   <section class="theme-section" id="apothecary">
+    <div class="theme-title">07 — The Apothecary</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">07 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -945,6 +1035,7 @@
 
   <!-- ══ THEME 8: THE OPERA HOUSE ══ -->
   <section class="theme-section" id="opera">
+    <div class="theme-title">08 — The Opera House</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">08 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -969,6 +1060,7 @@
 
   <!-- ══ THEME 9: THE WUNDERKAMMER ══ -->
   <section class="theme-section" id="wunderkammer">
+    <div class="theme-title">09 — The Wunderkammer</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">09 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -991,6 +1083,7 @@
 
   <!-- ══ THEME 10: THE MODERN VICTORIAN ══ -->
   <section class="theme-section" id="modern">
+    <div class="theme-title">10 — The Modern Victorian</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">10 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
