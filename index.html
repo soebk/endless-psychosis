@@ -797,6 +797,37 @@
       margin-top: 1.5rem; max-width: 450px;
       animation: fadeUp 1.2s ease 0.3s both;
     }
+    .favorites-cta {
+      margin-top: 2.5rem; text-align: center; position: relative;
+      animation: fadeUp 1.2s ease 0.5s both;
+    }
+    .fav-label {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.35em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 1rem;
+    }
+    .fav-buttons { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .fav-btn {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; padding: 0.8rem 2rem;
+      border: 1px solid rgba(197,160,80,0.5);
+      color: #c5a050; transition: all 0.3s; position: relative;
+    }
+    .fav-btn:hover {
+      background: rgba(197,160,80,0.1);
+      border-color: #c5a050;
+      box-shadow: 0 0 20px rgba(197,160,80,0.15);
+    }
+    .fav-parchment {
+      border-color: rgba(160,128,80,0.5);
+      color: #d4b896;
+    }
+    .fav-parchment:hover {
+      background: rgba(160,128,80,0.1);
+      border-color: #d4b896;
+      box-shadow: 0 0 20px rgba(160,128,80,0.15);
+    }
     .intro .scroll-hint {
       position: absolute; bottom: 2rem;
       font-family: 'Cinzel', serif; font-size: 0.55rem;
@@ -840,7 +871,14 @@
   <section class="intro" id="intro">
     <h1>Endless Psychosis</h1>
     <p class="tagline">"Everything must come to an end but we decide on what truly is endless"</p>
-    <div class="scroll-hint">Scroll to explore 10 themes</div>
+    <div class="favorites-cta">
+      <div class="fav-label">Costa's Favorites — Full Sites</div>
+      <div class="fav-buttons">
+        <a href="daguerreotype/" class="fav-btn fav-daguerreotype">The Daguerreotype Studio</a>
+        <a href="parchment/" class="fav-btn fav-parchment">The Parchment Archive</a>
+      </div>
+    </div>
+    <div class="scroll-hint">Or scroll to browse all 10 concepts</div>
   </section>
 
   <!-- ══ THEME 1: THE WHITE GALLERY ══ -->
@@ -893,6 +931,7 @@
   <!-- ══ THEME 3: THE PARCHMENT ARCHIVE ══ -->
   <section class="theme-section" id="parchment">
     <div class="theme-title">03 — The Parchment Archive</div>
+    <div class="favorite-badge reveal">Costa's Favorite</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">03 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -912,6 +951,7 @@
       </div>
     </div>
     <div class="wax-seal reveal">EP</div>
+    <a href="parchment/" class="view-full-site reveal">View Full Site →</a>
   </section>
 
   <!-- ══ THEME 4: THE GOTHIC CATHEDRAL ══ -->
@@ -946,6 +986,30 @@
     </div>
     <div class="cross-ornament reveal"></div>
   </section>
+
+  <!-- Cathedral "View Full Site" link style -->
+  <style>
+    .view-full-site {
+      display: inline-block; margin-top: 2rem;
+      font-family: 'Cinzel', serif; font-size: 0.65rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      text-decoration: none; padding: 0.7rem 2rem;
+      border: 1px solid currentColor; transition: all 0.3s;
+      opacity: 0.7;
+    }
+    .view-full-site:hover { opacity: 1; }
+    #daguerreotype .view-full-site { color: #c5a050; border-color: rgba(197,160,80,0.5); }
+    #daguerreotype .view-full-site:hover { background: rgba(197,160,80,0.1); }
+    #parchment .view-full-site { color: #8a7040; border-color: rgba(138,112,64,0.5); }
+    #parchment .view-full-site:hover { background: rgba(138,112,64,0.1); }
+    .favorite-badge {
+      display: inline-block; font-family: 'Cinzel', serif;
+      font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
+      padding: 0.3rem 0.8rem; margin-bottom: 1rem;
+      border: 1px solid rgba(197,160,80,0.4); color: #c5a050;
+    }
+    #parchment .favorite-badge { border-color: rgba(138,112,64,0.4); color: #8a7040; }
+  </style>
 
   <!-- ══ THEME 5: THE VICTORIAN BROADSHEET ══ -->
   <section class="theme-section" id="broadsheet">
@@ -982,6 +1046,7 @@
   <!-- ══ THEME 6: THE DAGUERREOTYPE STUDIO ══ -->
   <section class="theme-section" id="daguerreotype">
     <div class="theme-title">06 — The Daguerreotype Studio</div>
+    <div class="favorite-badge reveal">Costa's Favorite</div>
     <span class="theme-label">Theme Concept</span>
     <span class="theme-number">06 / 10</span>
     <h2 class="brand-name reveal">Endless Psychosis</h2>
@@ -1007,6 +1072,7 @@
         <div class="frame-label">The Portrait</div>
       </div>
     </div>
+    <a href="daguerreotype/" class="view-full-site reveal">View Full Site →</a>
   </section>
 
   <!-- ══ THEME 7: THE APOTHECARY ══ -->
