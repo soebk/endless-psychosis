@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endless Psychosis — Theme Concepts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,200;0,400;0,700;1,200;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+    body { font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    .theme-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; gap: 0;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+      padding: 0 1rem; height: 48px;
+      overflow-x: auto; scrollbar-width: none;
+      transition: background 0.3s;
+    }
+    .theme-nav::-webkit-scrollbar { display: none; }
+    .theme-nav a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em;
+      text-transform: uppercase; white-space: nowrap;
+      padding: 0.8rem 1rem; transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    .theme-nav a:hover, .theme-nav a.active {
+      color: #fff; border-bottom-color: #c5a050;
+    }
+    .nav-brand {
+      font-family: 'UnifrakturMaguntia', cursive; font-size: 1rem;
+      color: #fff !important; padding-right: 1.5rem !important;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      margin-right: 0.5rem; letter-spacing: 0 !important;
+    }
+
+    /* ── SHARED SECTION ── */
+    .theme-section {
+      min-height: 100vh; scroll-snap-align: start;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 5rem 2rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    .theme-label {
+      position: absolute; top: 5rem; left: 2rem;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.4;
+    }
+    .theme-number {
+      position: absolute; top: 4.5rem; right: 2rem;
+      font-family: 'Bodoni Moda', serif; font-size: 0.7rem;
+      opacity: 0.3;
+    }
+    .brand-name { line-height: 1.1; text-align: center; }
+    .brand-quote {
+      text-align: center; max-width: 500px;
+      font-style: italic; margin: 1.5rem auto;
+    }
+    .image-row {
+      display: flex; gap: 2rem; justify-content: center;
+      align-items: center; flex-wrap: wrap;
+      margin-top: 2rem; width: 100%; max-width: 1100px;
+    }
+    .image-row img { display: block; }
+
+    /* ── FADE IN ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s, transform 0.8s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal:nth-child(2) { transition-delay: 0.15s; }
+    .reveal:nth-child(3) { transition-delay: 0.3s; }
+    .reveal:nth-child(4) { transition-delay: 0.45s; }
+
+    /* ══════════════════════════════════════════════
+       THEME 1 — THE WHITE GALLERY
+       ══════════════════════════════════════════════ */
+    #gallery {
+      background: #ffffff;
+      color: #1a1a1a;
+    }
+    #gallery .theme-label { color: #999; }
+    #gallery .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: #111;
+    }
+    #gallery .brand-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: #666; font-weight: 300;
+    }
+    #gallery .frame {
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow:
+        0 0 0 1px #d4c49a,
+        0 0 0 3px #fff,
+        0 0 0 4px #d4c49a,
+        0 0 0 12px #f8f4eb,
+        0 0 0 13px #c5a050,
+        0 0 0 14px #b8943e,
+        0 8px 30px rgba(0,0,0,0.08);
+      position: relative;
+    }
+    #gallery .frame::before {
+      content: ''; position: absolute; inset: 12px;
+      border: 1px solid rgba(197,160,80,0.3);
+      pointer-events: none;
+    }
+    #gallery .frame img {
+      width: 220px; height: 300px; object-fit: cover;
+      filter: grayscale(10%);
+    }
+    #gallery .frame-label {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: #999; text-align: center; margin-top: 1rem;
+    }
+    #gallery .gallery-line {
+      width: 60px; height: 1px; background: #c5a050;
+      margin: 1.5rem auto 0;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 2 — THE DARK SALON
+       ══════════════════════════════════════════════ */
+    #salon {
+      background: #0f0a07;
+      color: #e8dcc8;
+    }
+    #salon::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(180,130,50,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(120,60,20,0.06) 0%, transparent 50%);
+    }
+    #salon .theme-label { color: #7a6840; }
+    #salon .theme-number { color: #7a6840; }
+    #salon .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: #c5a050;
+      text-shadow: 0 0 60px rgba(197,160,80,0.2);
+    }
+    #salon .brand-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: #8a7a60; font-weight: 300;
+    }
+    #salon .frame {
+      background: linear-gradient(145deg, #2a2010, #1a1508);
+      padding: 1.2rem;
+      border: 2px solid #8a7030;
+      box-shadow:
+        inset 0 0 20px rgba(0,0,0,0.5),
+        0 0 0 6px #0f0a07,
+        0 0 0 8px #6a5020,
+        0 10px 40px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    #salon .frame::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,220,100,0.05), transparent 50%);
+      pointer-events: none;
+    }
+    #salon .frame img {
+      width: 220px; height: 300px; object-fit: cover;
+      filter: sepia(15%) brightness(0.9);
+    }
+    #salon .frame-label {
+      font-family: 'Old Standard TT', serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; color: #7a6840;
+      text-align: center; margin-top: 0.8rem;
+      font-style: italic;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 3 — THE PARCHMENT ARCHIVE
+       ══════════════════════════════════════════════ */
+    #parchment {
+      background: #f0e8d8;
+      color: #3a2e1e;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(160,130,90,0.08) 28px, rgba(160,130,90,0.08) 29px);
+    }
+    #parchment::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(120,90,50,0.1) 100%);
+    }
+    #parchment .theme-label { color: #a08050; }
+    #parchment .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: #2a1e0e;
+    }
+    #parchment .brand-quote {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: #6a5a40; font-weight: 400;
+    }
+    #parchment .frame {
+      background: #faf4e8;
+      padding: 1rem;
+      border: 1px solid #c0a878;
+      box-shadow: 2px 3px 12px rgba(80,60,20,0.15);
+      transform: rotate(-0.5deg);
+      position: relative;
+    }
+    #parchment .frame:nth-child(2) { transform: rotate(0.3deg); }
+    #parchment .frame:nth-child(3) { transform: rotate(-0.2deg); }
+    #parchment .frame::before {
+      content: ''; position: absolute; top: -8px; left: 50%;
+      width: 40px; height: 16px; background: rgba(160,130,80,0.3);
+      transform: translateX(-50%); border-radius: 2px;
+    }
+    #parchment .frame img {
+      width: 200px; height: 280px; object-fit: cover;
+      filter: sepia(20%) contrast(1.05);
+    }
+    #parchment .frame-label {
+      font-family: 'Crimson Text', serif; font-size: 0.75rem;
+      color: #8a7a60; text-align: center; margin-top: 0.6rem;
+      font-style: italic;
+    }
+    #parchment .wax-seal {
+      width: 50px; height: 50px; border-radius: 50%;
+      background: radial-gradient(circle, #8a2020, #5a1010);
+      box-shadow: 0 2px 8px rgba(80,10,10,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      color: rgba(255,200,150,0.6); letter-spacing: 0.1em;
+      margin: 1.5rem auto 0;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 4 — THE GOTHIC CATHEDRAL
+       ══════════════════════════════════════════════ */
+    #cathedral {
+      background: #141418;
+      color: #c8c0b0;
+    }
+    #cathedral::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(0deg, rgba(20,20,24,1) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 0%, rgba(80,70,50,0.1) 0%, transparent 60%);
+    }
+    #cathedral .theme-label { color: #5a5040; }
+    #cathedral .theme-number { color: #5a5040; }
+    #cathedral .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: #a09080;
+      text-shadow: 0 2px 30px rgba(160,140,100,0.15);
+    }
+    #cathedral .brand-quote {
+      font-family: 'Spectral', serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #6a6050; font-weight: 200;
+      letter-spacing: 0.05em;
+    }
+    #cathedral .arch-frame {
+      position: relative;
+      width: 200px; height: 320px;
+      overflow: hidden;
+    }
+    #cathedral .arch-frame::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 100px 60px at 50% 0%, transparent 98%, #141418 100%);
+      pointer-events: none;
+    }
+    #cathedral .arch-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+      filter: brightness(0.8) contrast(1.1);
+    }
+    #cathedral .arch-frame .arch-border {
+      position: absolute; inset: 0; z-index: 2;
+      border: 2px solid rgba(160,140,100,0.3);
+      clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+      pointer-events: none;
+    }
+    #cathedral .frame-label {
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #5a5040; text-align: center; margin-top: 0.8rem;
+    }
+    #cathedral .cross-ornament {
+      width: 1px; height: 40px; background: rgba(160,140,100,0.3);
+      margin: 1.5rem auto 0; position: relative;
+    }
+    #cathedral .cross-ornament::before {
+      content: ''; position: absolute; top: 12px; left: -8px;
+      width: 17px; height: 1px; background: rgba(160,140,100,0.3);
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 5 — THE VICTORIAN BROADSHEET
+       ══════════════════════════════════════════════ */
+    #broadsheet {
+      background: #f5f0e5;
+      color: #1a1a1a;
+      padding: 5rem 1rem 3rem;
+    }
+    #broadsheet .broadsheet-container {
+      max-width: 900px; width: 100%;
+      border: 2px solid #1a1a1a;
+      padding: 2rem;
+      position: relative;
+    }
+    #broadsheet .broadsheet-container::before {
+      content: ''; position: absolute; inset: 4px;
+      border: 1px solid #1a1a1a; pointer-events: none;
+    }
+    #broadsheet .masthead {
+      text-align: center;
+      border-bottom: 3px solid #1a1a1a;
+      padding-bottom: 1rem; margin-bottom: 1rem;
+    }
+    #broadsheet .masthead .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      line-height: 1;
+    }
+    #broadsheet .masthead .dateline {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      margin-top: 0.5rem; color: #555;
+    }
+    #broadsheet .rule { border: none; border-top: 1px solid #1a1a1a; margin: 1rem 0; }
+    #broadsheet .rule-thick { border: none; border-top: 3px double #1a1a1a; margin: 1rem 0; }
+    #broadsheet .columns {
+      display: grid; grid-template-columns: 1fr 2px 1fr 2px 1fr;
+      gap: 1rem; margin-top: 1rem;
+    }
+    #broadsheet .col-divider { background: #1a1a1a; }
+    #broadsheet .column img {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      border: 1px solid #333; margin-bottom: 0.5rem;
+      filter: contrast(1.2) grayscale(30%);
+    }
+    #broadsheet .column .caption {
+      font-family: 'Crimson Text', serif;
+      font-size: 0.75rem; font-style: italic;
+      color: #555; text-align: center;
+    }
+    #broadsheet .brand-quote {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem; text-align: center;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 0.8rem 0; margin-top: 1rem;
+      color: #333;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 6 — THE DAGUERREOTYPE STUDIO
+       ══════════════════════════════════════════════ */
+    #daguerreotype {
+      background: #1a1816;
+      color: #c8b898;
+    }
+    #daguerreotype::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(60,50,30,0.2) 0%, transparent 70%);
+    }
+    #daguerreotype .theme-label { color: #6a5a40; }
+    #daguerreotype .brand-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 400; letter-spacing: 0.15em;
+      text-transform: uppercase; color: #b8a078;
+    }
+    #daguerreotype .brand-sub {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: #8a7a60; margin-top: 0.3rem;
+    }
+    #daguerreotype .brand-quote {
+      font-family: 'Old Standard TT', serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #6a5a40;
+    }
+    #daguerreotype .oval-frame {
+      width: 220px; height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #8a7a50;
+      box-shadow:
+        0 0 0 8px #1a1816,
+        0 0 0 10px #6a5a30,
+        0 0 0 18px rgba(100,80,40,0.15),
+        0 10px 40px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    #daguerreotype .oval-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: sepia(40%) brightness(0.85) contrast(1.2);
+    }
+    #daguerreotype .oval-frame::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse, transparent 50%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+    }
+    #daguerreotype .frame-label {
+      font-family: 'Old Standard TT', serif; font-size: 0.7rem;
+      color: #6a5a40; text-align: center; margin-top: 1rem;
+      font-style: italic; letter-spacing: 0.1em;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 7 — THE APOTHECARY
+       ══════════════════════════════════════════════ */
+    #apothecary {
+      background: #0a1a12;
+      color: #c8d0b8;
+    }
+    #apothecary::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(40,80,50,0.15) 0%, transparent 60%);
+    }
+    #apothecary .theme-label { color: #4a6a50; }
+    #apothecary .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: #a0b888;
+    }
+    #apothecary .brand-quote {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: #5a7a58;
+    }
+    #apothecary .apothecary-frame {
+      background: #0d2018;
+      border: 1px solid #3a5a3a;
+      padding: 1rem;
+      position: relative;
+    }
+    #apothecary .apothecary-frame::before,
+    #apothecary .apothecary-frame::after {
+      content: ''; position: absolute; pointer-events: none;
+    }
+    #apothecary .apothecary-frame::before {
+      inset: 4px; border: 1px solid rgba(100,140,90,0.2);
+    }
+    #apothecary .apothecary-frame::after {
+      top: -10px; left: 50%; transform: translateX(-50%);
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.3em; color: #4a6a50;
+      content: '✦';
+    }
+    #apothecary .apothecary-frame img {
+      width: 200px; height: 280px; object-fit: cover;
+      filter: hue-rotate(20deg) brightness(0.9) saturate(0.7);
+    }
+    #apothecary .apothecary-label {
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #5a8a58; text-align: center; margin-top: 0.7rem;
+      border-top: 1px solid rgba(100,140,90,0.2);
+      padding-top: 0.5rem;
+    }
+    #apothecary .botanical-line {
+      width: 100px; height: 1px;
+      background: linear-gradient(90deg, transparent, #4a6a50, transparent);
+      margin: 1.5rem auto 0;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 8 — THE OPERA HOUSE
+       ══════════════════════════════════════════════ */
+    #opera {
+      background: #0a0000;
+      color: #e8d8c8;
+    }
+    #opera::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(120,20,20,0.15) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(80,10,10,0.1) 0%, transparent 30%);
+    }
+    #opera .theme-label { color: #6a2020; }
+    #opera .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900; font-style: italic;
+      color: #c8a888;
+      text-shadow: 0 2px 40px rgba(200,100,80,0.15);
+    }
+    #opera .brand-sub {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 1rem; color: #6a4040;
+      margin-top: 0.3rem;
+    }
+    #opera .brand-quote {
+      font-family: 'Spectral', serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: #7a5a4a; font-weight: 200;
+    }
+    #opera .opera-frame {
+      position: relative; padding: 1.5rem;
+      background: linear-gradient(145deg, #1a0808, #120505);
+      border: 1px solid #4a1515;
+      box-shadow:
+        inset 0 0 30px rgba(80,10,10,0.2),
+        0 0 0 6px #0a0000,
+        0 0 0 7px #3a1010,
+        0 15px 50px rgba(0,0,0,0.6);
+    }
+    #opera .opera-frame::before {
+      content: ''; position: absolute; inset: 8px;
+      border: 1px solid rgba(200,100,80,0.1);
+      pointer-events: none;
+    }
+    #opera .opera-frame img {
+      width: 200px; height: 280px; object-fit: cover;
+      filter: brightness(0.85) contrast(1.15) sepia(10%);
+    }
+    #opera .frame-label {
+      font-family: 'Playfair Display', serif; font-size: 0.7rem;
+      font-style: italic; color: #6a4040;
+      text-align: center; margin-top: 0.8rem;
+    }
+    #opera .curtain-ornament {
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, transparent, #6a2020, transparent);
+      margin: 1.5rem auto 0; position: relative;
+    }
+    #opera .curtain-ornament::before {
+      content: '◆'; position: absolute; top: -7px; left: 50%;
+      transform: translateX(-50%); font-size: 0.5rem; color: #6a2020;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 9 — THE WUNDERKAMMER
+       ══════════════════════════════════════════════ */
+    #wunderkammer {
+      background: #1a1510;
+      color: #c8b898;
+    }
+    #wunderkammer::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(90deg, transparent 0px, transparent 299px, rgba(100,80,40,0.1) 299px, rgba(100,80,40,0.1) 300px),
+        linear-gradient(180deg, rgba(40,30,15,0.8), transparent 20%, transparent 80%, rgba(40,30,15,0.8));
+    }
+    #wunderkammer .theme-label { color: #7a6840; }
+    #wunderkammer .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: #b8a070;
+    }
+    #wunderkammer .brand-quote {
+      font-family: 'Crimson Text', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: #7a6840;
+    }
+    #wunderkammer .specimen {
+      background: #221c14;
+      border: 1px solid #4a3c28;
+      padding: 0.8rem;
+      position: relative;
+    }
+    #wunderkammer .specimen::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, #4a3c28, #8a7040, #4a3c28);
+    }
+    #wunderkammer .specimen img {
+      width: 200px; height: 260px; object-fit: cover;
+      filter: sepia(15%) brightness(0.9);
+    }
+    #wunderkammer .specimen-plate {
+      background: linear-gradient(145deg, #3a3020, #2a2418);
+      border: 1px solid #5a4a30;
+      padding: 0.3rem 0.8rem; margin-top: 0.6rem;
+      text-align: center;
+    }
+    #wunderkammer .specimen-plate span {
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #a09060;
+    }
+
+    /* ══════════════════════════════════════════════
+       THEME 10 — THE MODERN VICTORIAN
+       ══════════════════════════════════════════════ */
+    #modern {
+      background: #fafafa;
+      color: #111;
+    }
+    #modern .theme-label { color: #bbb; }
+    #modern .brand-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: #111;
+    }
+    #modern .brand-sub {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.5em; text-transform: uppercase;
+      color: #999; margin-top: 0.5rem;
+    }
+    #modern .brand-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      color: #888; font-weight: 300;
+    }
+    #modern .image-row { gap: 3rem; }
+    #modern .clean-frame {
+      position: relative;
+    }
+    #modern .clean-frame img {
+      width: 240px; height: 340px; object-fit: cover;
+    }
+    #modern .clean-frame::before {
+      content: ''; position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border: 1px solid #e0e0e0;
+      pointer-events: none;
+    }
+    #modern .clean-frame::after {
+      content: ''; position: absolute;
+      top: -5px; right: -5px;
+      width: 20px; height: 20px;
+      border-top: 1px solid #ccc; border-right: 1px solid #ccc;
+      pointer-events: none;
+    }
+    #modern .frame-label {
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: #bbb; text-align: center; margin-top: 1.2rem;
+    }
+    #modern .minimal-ornament {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 2rem;
+    }
+    #modern .minimal-ornament span {
+      width: 40px; height: 1px; background: #ddd;
+    }
+    #modern .minimal-ornament em {
+      font-family: 'Cinzel', serif; font-size: 0.5rem;
+      letter-spacing: 0.4em; color: #bbb;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .theme-nav { height: 42px; }
+      .theme-nav a { font-size: 0.55rem; padding: 0.7rem 0.6rem; }
+      .nav-brand { font-size: 0.85rem; }
+      .theme-section { padding: 4.5rem 1.2rem 2rem; }
+      .image-row { gap: 1.5rem; }
+      .theme-label { font-size: 0.5rem; top: 4rem; left: 1.2rem; }
+      .theme-number { top: 3.8rem; right: 1.2rem; }
+
+      #gallery .frame img,
+      #salon .frame img,
+      #apothecary .apothecary-frame img,
+      #opera .opera-frame img { width: 160px; height: 230px; }
+      #gallery .frame, #salon .frame { padding: 1rem; }
+      #daguerreotype .oval-frame { width: 170px; height: 240px; }
+      #wunderkammer .specimen img { width: 160px; height: 210px; }
+      #parchment .frame img { width: 160px; height: 220px; }
+      #modern .clean-frame img { width: 180px; height: 260px; }
+      #cathedral .arch-frame { width: 160px; height: 260px; }
+
+      #broadsheet .columns { grid-template-columns: 1fr; gap: 1rem; }
+      #broadsheet .col-divider { display: none; }
+      #broadsheet .broadsheet-container { padding: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .image-row { gap: 1rem; }
+      #gallery .frame img,
+      #salon .frame img,
+      #apothecary .apothecary-frame img,
+      #opera .opera-frame img { width: 130px; height: 190px; }
+      #daguerreotype .oval-frame { width: 140px; height: 200px; }
+      #wunderkammer .specimen img { width: 130px; height: 175px; }
+      #parchment .frame img { width: 130px; height: 185px; }
+      #modern .clean-frame img { width: 140px; height: 200px; }
+      #cathedral .arch-frame { width: 130px; height: 215px; }
+    }
+
+    /* ── INTRO SECTION ── */
+    .intro {
+      min-height: 100vh; scroll-snap-align: start;
+      background: #000; color: #fff;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 2rem;
+      position: relative;
+    }
+    .intro::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(40,35,25,0.3) 0%, transparent 70%);
+    }
+    .intro h1 {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(3rem, 10vw, 7rem);
+      line-height: 1; position: relative;
+      animation: fadeUp 1.2s ease both;
+    }
+    .intro .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1.5rem; max-width: 450px;
+      animation: fadeUp 1.2s ease 0.3s both;
+    }
+    .intro .scroll-hint {
+      position: absolute; bottom: 2rem;
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      animation: fadeUp 1.2s ease 0.6s both;
+    }
+    .intro .scroll-hint::after {
+      content: ''; display: block; width: 1px; height: 30px;
+      background: rgba(255,255,255,0.15); margin: 0.5rem auto 0;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="theme-nav">
+    <a href="#intro" class="nav-brand">EP</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#salon">Salon</a>
+    <a href="#parchment">Archive</a>
+    <a href="#cathedral">Cathedral</a>
+    <a href="#broadsheet">Broadsheet</a>
+    <a href="#daguerreotype">Daguerreo.</a>
+    <a href="#apothecary">Apothecary</a>
+    <a href="#opera">Opera</a>
+    <a href="#wunderkammer">Wunderkammer</a>
+    <a href="#modern">Modern</a>
+  </nav>
+
+  <!-- ── INTRO ── -->
+  <section class="intro" id="intro">
+    <h1>Endless Psychosis</h1>
+    <p class="tagline">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="scroll-hint">Scroll to explore 10 themes</div>
+  </section>
+
+  <!-- ══ THEME 1: THE WHITE GALLERY ══ -->
+  <section class="theme-section" id="gallery">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">01 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <div class="gallery-line reveal"></div>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="frame-label">Plate I</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="frame-label">Plate II</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="frame-label">Plate III</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THEME 2: THE DARK SALON ══ -->
+  <section class="theme-section" id="salon">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">02 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="frame-label">Opus I</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="frame-label">Opus II</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="frame-label">Opus III</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THEME 3: THE PARCHMENT ARCHIVE ══ -->
+  <section class="theme-section" id="parchment">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">03 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="frame-label">Exhibit A</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="frame-label">Exhibit B</div>
+      </div>
+      <div class="frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="frame-label">Exhibit C</div>
+      </div>
+    </div>
+    <div class="wax-seal reveal">EP</div>
+  </section>
+
+  <!-- ══ THEME 4: THE GOTHIC CATHEDRAL ══ -->
+  <section class="theme-section" id="cathedral">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">04 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="reveal" style="text-align:center;">
+        <div class="arch-frame">
+          <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+          <div class="arch-border"></div>
+        </div>
+        <div class="frame-label">I</div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div class="arch-frame">
+          <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+          <div class="arch-border"></div>
+        </div>
+        <div class="frame-label">II</div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div class="arch-frame">
+          <img src="assets/images/portrait.png" alt="Portrait">
+          <div class="arch-border"></div>
+        </div>
+        <div class="frame-label">III</div>
+      </div>
+    </div>
+    <div class="cross-ornament reveal"></div>
+  </section>
+
+  <!-- ══ THEME 5: THE VICTORIAN BROADSHEET ══ -->
+  <section class="theme-section" id="broadsheet">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">05 / 10</span>
+    <div class="broadsheet-container reveal">
+      <div class="masthead">
+        <div class="dateline">Est. MMXXVI &mdash; Volume I &mdash; @costa_zinzopoulos</div>
+        <h2 class="brand-name">Endless Psychosis</h2>
+        <div class="dateline">Clothing &amp; Art &mdash; "Everything must come to an end but we decide on what truly is endless"</div>
+      </div>
+      <hr class="rule-thick">
+      <div class="columns">
+        <div class="column">
+          <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+          <div class="caption">Fig. 1 — The Scholar</div>
+        </div>
+        <div class="col-divider"></div>
+        <div class="column">
+          <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+          <div class="caption">Fig. 2 — Endless University</div>
+        </div>
+        <div class="col-divider"></div>
+        <div class="column">
+          <img src="assets/images/portrait.png" alt="Portrait">
+          <div class="caption">Fig. 3 — The Portrait</div>
+        </div>
+      </div>
+      <p class="brand-quote">"Everything must come to an end but we decide on what truly is endless"</p>
+    </div>
+  </section>
+
+  <!-- ══ THEME 6: THE DAGUERREOTYPE STUDIO ══ -->
+  <section class="theme-section" id="daguerreotype">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">06 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <div class="brand-sub reveal">Est. MMXXVI</div>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="reveal" style="text-align:center;">
+        <div class="oval-frame">
+          <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        </div>
+        <div class="frame-label">The Scholar</div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div class="oval-frame">
+          <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        </div>
+        <div class="frame-label">The Crest</div>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div class="oval-frame">
+          <img src="assets/images/portrait.png" alt="Portrait">
+        </div>
+        <div class="frame-label">The Portrait</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THEME 7: THE APOTHECARY ══ -->
+  <section class="theme-section" id="apothecary">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">07 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="apothecary-frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="apothecary-label">Specimen I</div>
+      </div>
+      <div class="apothecary-frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="apothecary-label">Specimen II</div>
+      </div>
+      <div class="apothecary-frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="apothecary-label">Specimen III</div>
+      </div>
+    </div>
+    <div class="botanical-line reveal"></div>
+  </section>
+
+  <!-- ══ THEME 8: THE OPERA HOUSE ══ -->
+  <section class="theme-section" id="opera">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">08 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <div class="brand-sub reveal">A Collection by Costa</div>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="opera-frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="frame-label">Act I</div>
+      </div>
+      <div class="opera-frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="frame-label">Act II</div>
+      </div>
+      <div class="opera-frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="frame-label">Act III</div>
+      </div>
+    </div>
+    <div class="curtain-ornament reveal"></div>
+  </section>
+
+  <!-- ══ THEME 9: THE WUNDERKAMMER ══ -->
+  <section class="theme-section" id="wunderkammer">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">09 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="specimen reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="specimen-plate"><span>No. 001 — The Scholar</span></div>
+      </div>
+      <div class="specimen reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="specimen-plate"><span>No. 002 — The Crest</span></div>
+      </div>
+      <div class="specimen reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="specimen-plate"><span>No. 003 — The Portrait</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THEME 10: THE MODERN VICTORIAN ══ -->
+  <section class="theme-section" id="modern">
+    <span class="theme-label">Theme Concept</span>
+    <span class="theme-number">10 / 10</span>
+    <h2 class="brand-name reveal">Endless Psychosis</h2>
+    <div class="brand-sub reveal">Clothing &amp; Art</div>
+    <p class="brand-quote reveal">"Everything must come to an end but we decide on what truly is endless"</p>
+    <div class="image-row">
+      <div class="clean-frame reveal">
+        <img src="assets/images/endless-psychosis-logo.png" alt="Endless Psychosis">
+        <div class="frame-label">001</div>
+      </div>
+      <div class="clean-frame reveal">
+        <img src="assets/images/psycho-ep-crest.png" alt="Psycho EP Crest">
+        <div class="frame-label">002</div>
+      </div>
+      <div class="clean-frame reveal">
+        <img src="assets/images/portrait.png" alt="Portrait">
+        <div class="frame-label">003</div>
+      </div>
+    </div>
+    <div class="minimal-ornament reveal">
+      <span></span>
+      <em>EP</em>
+      <span></span>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('.theme-section, .intro');
+    const navLinks = document.querySelectorAll('.theme-nav a');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const id = e.target.id;
+          const link = document.querySelector(`.theme-nav a[href="#${id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+</body>
+</html>
